@@ -1,0 +1,39 @@
+ALGORITHM algorithm_name
+VAR
+    set_declarations
+BEGIN
+    set_instructions
+END
+# Programme : Analyse d'une phrase
+
+# Initialisation des compteurs
+longueur = 0
+nb_mots = 0
+nb_voyelles = 0
+dans_mot = False
+voyelles = "aeiouyAEIOUY"
+
+# Lire la phrase depuis l'utilisateur
+phrase = input("Entrez une phrase qui se termine par un point : ")
+
+# Traitement caractère par caractère
+for ch in phrase:
+    if ch == '.':
+        break  # Fin de la phrase
+
+    longueur += 1  # Compte les caractères sauf le point
+
+    if ch in voyelles:
+        nb_voyelles += 1  # Compte les voyelles
+
+    if ch != ' ' and not dans_mot:
+        nb_mots += 1
+        dans_mot = True  # On vient de commencer un nouveau mot
+    elif ch == ' ':
+        dans_mot = False  # Fin d’un mot
+
+# Résultats
+print("Longueur de la phrase (sans le point) :", longueur)
+print("Nombre de mots :", nb_mots)
+print("Nombre de voyelles :", nb_voyelles)
+
